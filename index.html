@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,18 +16,22 @@
             box-sizing: border-box;
         }
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        html {
+            scroll-behavior: smooth;
+        }
 
-            padding: 25px;
+        body {
+
+            min-height: 100vh;
 
             font-family: Georgia, serif;
+
             color: white;
 
+            overflow-x: hidden;
+
             background:
+
                 radial-gradient(
                     circle at 10% 10%,
                     rgba(0, 255, 170, 0.25),
@@ -41,7 +46,7 @@
 
                 radial-gradient(
                     circle at 50% 50%,
-                    rgba(30, 150, 255, 0.10),
+                    rgba(30, 150, 255, 0.12),
                     transparent 45%
                 ),
 
@@ -52,7 +57,87 @@
                     #170d25
                 );
 
-            overflow-x: hidden;
+            background-size: 180% 180%;
+
+            animation: cores 12s ease infinite;
+        }
+
+
+        /* =========================
+           FUNDO ANIMADO
+        ========================= */
+
+        @keyframes cores {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+
+        /* =========================
+           PARTÍCULAS
+        ========================= */
+
+        .particula {
+
+            position: fixed;
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: rgba(150, 255, 220, 0.7);
+
+            box-shadow:
+                0 0 10px rgba(100, 255, 220, 0.8);
+
+            pointer-events: none;
+
+            animation: subir linear infinite;
+
+        }
+
+        @keyframes subir {
+
+            from {
+
+                transform:
+                    translateY(110vh)
+                    scale(0.5);
+
+                opacity: 0;
+
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            to {
+
+                transform:
+                    translateY(-10vh)
+                    scale(1.2);
+
+                opacity: 0;
+
+            }
+
         }
 
 
@@ -61,6 +146,20 @@
         ========================= */
 
         .capa {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 25px;
+
+        }
+
+
+        .capa-conteudo {
 
             position: relative;
 
@@ -88,12 +187,9 @@
                 0 0 70px rgba(170, 80, 255, 0.12);
 
             animation: aparecer 1.5s ease;
+
         }
 
-
-        /* =========================
-           CORAÇÕES
-        ========================= */
 
         .coracoes {
 
@@ -104,12 +200,9 @@
             margin-bottom: 25px;
 
             animation: flutuar 3s ease-in-out infinite;
+
         }
 
-
-        /* =========================
-           TÍTULO
-        ========================= */
 
         h1 {
 
@@ -132,15 +225,8 @@
 
             color: transparent;
 
-            text-shadow:
-
-                0 0 20px rgba(120, 220, 255, 0.15);
         }
 
-
-        /* =========================
-           SUBTÍTULO
-        ========================= */
 
         .subtitulo {
 
@@ -151,12 +237,9 @@
             color: #eeeeff;
 
             margin-bottom: 25px;
+
         }
 
-
-        /* =========================
-           PERÍODO
-        ========================= */
 
         .periodo {
 
@@ -165,22 +248,23 @@
             color: #a9ffe0;
 
             margin-bottom: 35px;
+
         }
 
 
         /* =========================
-           BOTÃO
+           BOTÕES
         ========================= */
 
-        .botao {
+        button {
 
             border: none;
 
             border-radius: 30px;
 
-            padding: 16px 32px;
+            padding: 15px 28px;
 
-            font-size: 17px;
+            font-size: 16px;
 
             font-weight: bold;
 
@@ -203,29 +287,23 @@
 
                 0 0 20px rgba(160, 90, 255, 0.20);
 
-            transition:
+            transition: 0.3s;
 
-                transform 0.3s ease,
-
-                box-shadow 0.3s ease;
         }
 
 
-        .botao:hover {
+        button:hover {
 
-            transform: scale(1.06);
+            transform: scale(1.05);
 
             box-shadow:
 
                 0 0 25px rgba(70, 255, 190, 0.45),
 
                 0 0 30px rgba(180, 100, 255, 0.35);
+
         }
 
-
-        /* =========================
-           RODAPÉ
-        ========================= */
 
         .rodape {
 
@@ -234,6 +312,264 @@
             font-size: 14px;
 
             color: #c8c8dc;
+
+        }
+
+
+        /* =========================
+           DIÁRIO
+        ========================= */
+
+        #diario {
+
+            display: none;
+
+            min-height: 100vh;
+
+            padding: 35px 20px 50px;
+
+            animation: paginaEntrar 0.8s ease;
+
+        }
+
+
+        .diario-container {
+
+            width: 100%;
+
+            max-width: 850px;
+
+            margin: auto;
+
+        }
+
+
+        /* CABEÇALHO */
+
+        .topo-diario {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .mini-titulo {
+
+            font-size: 15px;
+
+            color: #9affdf;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        #contador {
+
+            font-size: 14px;
+
+            color: #cfcfff;
+
+        }
+
+
+        /* PÁGINA */
+
+        .pagina {
+
+            position: relative;
+
+            min-height: 65vh;
+
+            padding: 40px 30px;
+
+            border-radius: 25px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(8, 25, 35, 0.92),
+                    rgba(20, 15, 40, 0.92)
+                );
+
+            border:
+
+                1px solid
+                rgba(130, 255, 220, 0.25);
+
+            box-shadow:
+
+                0 0 30px rgba(0, 255, 180, 0.10),
+
+                0 0 60px rgba(120, 80, 255, 0.10);
+
+            backdrop-filter: blur(12px);
+
+            animation: paginaEntrar 0.7s ease;
+
+        }
+
+
+        .data {
+
+            text-align: center;
+
+            color: #91ffdc;
+
+            font-size: 15px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .titulo-dia {
+
+            text-align: center;
+
+            font-size: 32px;
+
+            margin-bottom: 30px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #6dffb5,
+                    #72dfff,
+                    #c48cff
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+        }
+
+
+        .texto {
+
+            font-family: Georgia, serif;
+
+            font-size: 18px;
+
+            line-height: 1.85;
+
+            color: #f1f1f8;
+
+            white-space: pre-line;
+
+        }
+
+
+        .texto p {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* =========================
+           NAVEGAÇÃO
+        ========================= */
+
+        .navegacao {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-top: 25px;
+
+        }
+
+
+        .navegacao button {
+
+            min-width: 120px;
+
+        }
+
+
+        .pagina-numero {
+
+            color: #d9d9ee;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           BARRA DE PROGRESSO
+        ========================= */
+
+        .progresso {
+
+            width: 100%;
+
+            height: 5px;
+
+            margin-top: 20px;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,0.10);
+
+            overflow: hidden;
+
+        }
+
+
+        .progresso-barra {
+
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: 10px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #48e99c,
+                    #4bbcff,
+                    #a96cff
+                );
+
+            transition: width 0.5s ease;
+
+        }
+
+
+        /* =========================
+           FINAL
+        ========================= */
+
+        .final {
+
+            text-align: center;
+
+            margin-top: 35px;
+
+            color: #dcdcff;
+
+            font-size: 14px;
+
         }
 
 
@@ -250,6 +586,7 @@
                 transform:
                     translateY(30px)
                     scale(0.96);
+
             }
 
             to {
@@ -259,7 +596,34 @@
                 transform:
                     translateY(0)
                     scale(1);
+
             }
+
+        }
+
+
+        @keyframes paginaEntrar {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateX(35px)
+                    scale(0.98);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0)
+                    scale(1);
+
+            }
+
         }
 
 
@@ -270,13 +634,16 @@
 
                 transform:
                     translateY(0);
+
             }
 
             50% {
 
                 transform:
                     translateY(-8px);
+
             }
+
         }
 
 
@@ -286,29 +653,75 @@
 
         @media (max-width: 600px) {
 
-            .capa {
+            .capa-conteudo {
 
                 padding:
                     45px
                     22px;
+
             }
+
 
             h1 {
 
-                font-size: 34px;
+                font-size: 35px;
+
             }
+
 
             .subtitulo {
 
                 font-size: 17px;
+
             }
+
 
             .coracoes {
 
                 font-size: 24px;
 
                 letter-spacing: 4px;
+
             }
+
+
+            .pagina {
+
+                padding:
+                    30px
+                    20px;
+
+                min-height: 70vh;
+
+            }
+
+
+            .titulo-dia {
+
+                font-size: 27px;
+
+            }
+
+
+            .texto {
+
+                font-size: 17px;
+
+                line-height: 1.75;
+
+            }
+
+
+            .navegacao button {
+
+                min-width: auto;
+
+                padding:
+                    13px
+                    18px;
+
+            }
+
         }
 
     </style>
@@ -319,67 +732,574 @@
 <body>
 
 
-    <main class="capa">
+    <!-- =========================
+         PARTÍCULAS
+    ========================= -->
+
+    <div class="particula"
+         style="left:10%; animation-duration:9s;">
+    </div>
+
+    <div class="particula"
+         style="left:25%; animation-duration:12s;">
+    </div>
+
+    <div class="particula"
+         style="left:45%; animation-duration:10s;">
+    </div>
+
+    <div class="particula"
+         style="left:65%; animation-duration:14s;">
+    </div>
+
+    <div class="particula"
+         style="left:80%; animation-duration:11s;">
+    </div>
+
+    <div class="particula"
+         style="left:90%; animation-duration:15s;">
+    </div>
 
 
-        <div class="coracoes">
+    <!-- =========================
+         CAPA
+    ========================= -->
 
-            💚 💙 💜
+    <section class="capa" id="capa">
+
+        <main class="capa-conteudo">
+
+            <div class="coracoes">
+
+                💚 💙 💜
+
+            </div>
+
+
+            <h1>
+
+                Meu Diário
+
+            </h1>
+
+
+            <p class="subtitulo">
+
+                Para a pessoa mais importante
+                da minha vida 💚
+
+            </p>
+
+
+            <p class="periodo">
+
+                01/09/2026 — 22/09/2026
+
+            </p>
+
+
+            <button onclick="abrirDiario()">
+
+                📖 Abrir meu diário
+
+            </button>
+
+
+            <p class="rodape">
+
+                Escrito com muito amor,
+                carinho e algumas bobagens
+                hihihihi ✨
+
+            </p>
+
+        </main>
+
+    </section>
+
+
+
+    <!-- =========================
+         DIÁRIO
+    ========================= -->
+
+    <section id="diario">
+
+        <div class="diario-container">
+
+
+            <div class="topo-diario">
+
+                <div class="mini-titulo">
+
+                    💚 💙 💜 MEU DIÁRIO 💚 💙 💜
+
+                </div>
+
+                <div id="contador">
+
+                    Página 1 de 22
+
+                </div>
+
+            </div>
+
+
+            <article class="pagina">
+
+                <div
+                    class="data"
+                    id="data">
+                    01/09/2026
+                </div>
+
+
+                <h2
+                    class="titulo-dia"
+                    id="titulo">
+                    Primeiro dia
+                </h2>
+
+
+                <div
+                    class="texto"
+                    id="texto">
+
+                    <p>
+                        COLOQUE AQUI O TEXTO DO SEU PRIMEIRO DIA.
+                    </p>
+
+                    <p>
+                        Você pode escrever normalmente,
+                        usar emojis e separar os parágrafos.
+                    </p>
+
+                    <p>
+                        💚 💙 💜
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <div class="navegacao">
+
+                <button
+                    onclick="paginaAnterior()"
+                    id="anterior">
+
+                    ← Anterior
+
+                </button>
+
+
+                <span
+                    class="pagina-numero"
+                    id="numero">
+
+                    1 / 22
+
+                </span>
+
+
+                <button
+                    onclick="proximaPagina()">
+
+                    Próximo →
+
+                </button>
+
+            </div>
+
+
+            <div class="progresso">
+
+                <div
+                    class="progresso-barra"
+                    id="barra">
+                </div>
+
+            </div>
+
+
+            <div class="final">
+
+                Feito com amor 💚💙💜
+
+            </div>
 
         </div>
 
+    </section>
 
-        <h1>
-
-            Meu Diário
-
-        </h1>
-
-
-        <p class="subtitulo">
-
-            Para a pessoa mais importante da minha vida 💚
-
-        </p>
-
-
-        <p class="periodo">
-
-            01/09/2026 — 22/09/2026
-
-        </p>
-
-
-        <button
-            class="botao"
-            onclick="abrirDiario()">
-
-            📖 Abrir meu diário
-
-        </button>
-
-
-        <p class="rodape">
-
-            Escrito com muito amor,
-            carinho e algumas bobagens
-            hihihihi ✨
-
-        </p>
-
-
-    </main>
 
 
     <script>
 
+
+        /* =========================
+           CONTEÚDO DO DIÁRIO
+        ========================= */
+
+        const paginas = [
+
+            {
+                data: "01/09/2026",
+                titulo: "Primeiro dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 01.
+
+Você pode colocar seus parágrafos normalmente.
+
+💚💙💜
+                `
+            },
+
+
+            {
+                data: "02/09/2026",
+                titulo: "Segundo dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 02.
+
+Escreva aqui exatamente do seu jeito.
+                `
+            },
+
+
+            {
+                data: "03/09/2026",
+                titulo: "Terceiro dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 03.
+                `
+            },
+
+
+            {
+                data: "04/09/2026",
+                titulo: "Quarto dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 04.
+                `
+            },
+
+
+            {
+                data: "05/09/2026",
+                titulo: "Quinto dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 05.
+                `
+            },
+
+
+            {
+                data: "06/09/2026",
+                titulo: "Sexto dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 06.
+                `
+            },
+
+
+            {
+                data: "07/09/2026",
+                titulo: "Sétimo dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 07.
+                `
+            },
+
+
+            {
+                data: "08/09/2026",
+                titulo: "Oitavo dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 08.
+                `
+            },
+
+
+            {
+                data: "09/09/2026",
+                titulo: "Nono dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 09.
+                `
+            },
+
+
+            {
+                data: "10/09/2026",
+                titulo: "Décimo dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 10.
+                `
+            },
+
+
+            {
+                data: "11/09/2026",
+                titulo: "Décimo primeiro dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 11.
+                `
+            },
+
+
+            {
+                data: "12/09/2026",
+                titulo: "Décimo segundo dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 12.
+                `
+            },
+
+
+            {
+                data: "13/09/2026",
+                titulo: "Décimo terceiro dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 13.
+                `
+            },
+
+
+            {
+                data: "14/09/2026",
+                titulo: "Décimo quarto dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 14.
+                `
+            },
+
+
+            {
+                data: "15/09/2026",
+                titulo: "Décimo quinto dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 15.
+                `
+            },
+
+
+            {
+                data: "16/09/2026",
+                titulo: "Décimo sexto dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 16.
+                `
+            },
+
+
+            {
+                data: "17/09/2026",
+                titulo: "7 meses ❤️",
+                texto: `
+DIA ESPECIAL.
+
+COLOQUE AQUI A PARTE ROMÂNTICA
+DO SEU TEXTO DESSE DIA.
+
+💚 💙 💜
+                `
+            },
+
+
+            {
+                data: "18/09/2026",
+                titulo: "Décimo oitavo dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 18.
+                `
+            },
+
+
+            {
+                data: "19/09/2026",
+                titulo: "Décimo nono dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 19.
+                `
+            },
+
+
+            {
+                data: "20/09/2026",
+                titulo: "Vigésimo dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 20.
+                `
+            },
+
+
+            {
+                data: "21/09/2026",
+                titulo: "Penúltimo dia",
+                texto: `
+COLOQUE AQUI O TEXTO DO DIA 21.
+                `
+            },
+
+
+            {
+                data: "22/09/2026",
+                titulo: "Última página 💜",
+                texto: `
+COLOQUE AQUI O SEU TEXTO FINAL.
+
+Essa é a última página do diário.
+
+💚💙💜
+
+Com amor,
+seu namorado ❤️
+                `
+            }
+
+        ];
+
+
+        /* =========================
+           VARIÁVEL DA PÁGINA
+        ========================= */
+
+        let paginaAtual = 0;
+
+
+
+        /* =========================
+           ABRIR DIÁRIO
+        ========================= */
+
         function abrirDiario() {
 
-            alert(
-                "Nosso diário vai começar... 💚💙💜"
-            );
+            document.getElementById("capa").style.display = "none";
+
+            document.getElementById("diario").style.display = "block";
+
+            carregarPagina();
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
         }
+
+
+
+        /* =========================
+           CARREGAR PÁGINA
+        ========================= */
+
+        function carregarPagina() {
+
+            const pagina = paginas[paginaAtual];
+
+            document.getElementById("data").textContent =
+                pagina.data;
+
+            document.getElementById("titulo").textContent =
+                pagina.titulo;
+
+            document.getElementById("texto").textContent =
+                pagina.texto.trim();
+
+            document.getElementById("contador").textContent =
+                "Página " +
+                (paginaAtual + 1) +
+                " de " +
+                paginas.length;
+
+            document.getElementById("numero").textContent =
+                (paginaAtual + 1) +
+                " / " +
+                paginas.length;
+
+
+            /* barra */
+
+            const progresso =
+                ((paginaAtual + 1) / paginas.length) * 100;
+
+            document.getElementById("barra").style.width =
+                progresso + "%";
+
+
+            /* botão anterior */
+
+            if (paginaAtual === 0) {
+
+                document.getElementById("anterior").style.opacity =
+                    "0.4";
+
+            } else {
+
+                document.getElementById("anterior").style.opacity =
+                    "1";
+
+            }
+
+
+            /* animação */
+
+            const paginaElemento =
+                document.querySelector(".pagina");
+
+            paginaElemento.style.animation = "none";
+
+            void paginaElemento.offsetWidth;
+
+            paginaElemento.style.animation =
+                "paginaEntrar 0.7s ease";
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+
+        /* =========================
+           PRÓXIMA
+        ========================= */
+
+        function proximaPagina() {
+
+            if (paginaAtual < paginas.length - 1) {
+
+                paginaAtual++;
+
+                carregarPagina();
+
+            }
+
+        }
+
+
+
+        /* =========================
+           ANTERIOR
+        ========================= */
+
+        function paginaAnterior() {
+
+            if (paginaAtual > 0) {
+
+                paginaAtual--;
+
+                carregarPagina();
+
+            }
+
+        }
+
 
     </script>
 
